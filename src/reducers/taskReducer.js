@@ -1,11 +1,7 @@
 import ACTION_TYPES from '../actions/actionTypes';
 
 const initialState = {
-  tasks: {
-    tasks: [],
-    body: '',
-    isDone: false,
-  },
+  tasks: [],
 };
 
 function taskReducer (state = initialState, action) {

@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { Formik, Field, Form } from 'formik';
+import {createTaskRequest} from '../actions/createActionTask';
 
 const TaskForm = props => {
   const { createTask } = props;
@@ -25,7 +26,7 @@ const TaskForm = props => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  createTask: values => dispatch(TaskCreatorAction.createTask(values)),
+  createTask: values => dispatch(createTaskRequest(values)),
 });
 
 export default connect(null, mapDispatchToProps)(TaskForm);

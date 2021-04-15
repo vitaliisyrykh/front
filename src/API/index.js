@@ -4,4 +4,5 @@ const httpClient = axios.create({
   baseURL: 'http://localhost:3000/api',
 });
 
-export const createTask = async value => httpClient.post('/tasks', value);
+ export const createTask = async value => httpClient.post('/tasks/', value);
+ 

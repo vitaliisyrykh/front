@@ -15,14 +15,14 @@ const App = props => {
       <Router>
         <ul>
           <li>
-            <NavLink to='/tasks'>Tasks</NavLink>
+            <NavLink to='/tasks/'>Tasks</NavLink>
           </li>
         </ul>
 
         <Suspense fallback='App loading...'>
           <Switch>
             <Route exact path='/'/>
-            <Route path='/tasks' component={Task}/>
+            <Route path='/tasks/' component={Task}/>
           </Switch>
         </Suspense>
       </Router>

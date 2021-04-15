@@ -30,6 +30,7 @@ function taskReducer (state = initialState, action) {
         error,
       };
     }
+    default:return state;
   }
 }
 export default taskReducer;

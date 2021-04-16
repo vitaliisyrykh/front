@@ -29,7 +29,33 @@ function taskReducer (state = initialState, action) {
         error,
       };
     }
-    default:return state;
+    case ACTION_TYPES.GET_TASKS_REQUEST: {
+      return{
+        ...state,
+        isFetching: true,
+      }
+    }
+    case ACTION_TYPES.GET_TASKS_SUCCESS: {
+      const {
+        state: { tasks },
+      } = state;
+      const { tasks: newTasks } = action;
+      
+      return {
+        ...state,
+        isFetching:false,
+        tasks: [...tasks, ...newTasks],
+      };
+    }
+    case ACTION_TYPES.GET_TASKS_ERROR:{
+      const { error}=action;
+      return{
+        ...state,
+        error
+      }
+    }
+    default:
+      return state;
   }
 }
 export default taskReducer;

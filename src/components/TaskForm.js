@@ -12,13 +12,13 @@ const TaskForm = props => {
   return (
     <Formik
       initialValues={{
-        bodyTask: '',
+        body: '',
         isDone: false,
       }}
       onSubmit={onSubmit}
     >
       <Form>
-        <Field name='bodyTask' placeholder='Введите текст для задания' />
+        <Field name='body' placeholder='Введите текст для задания' />
         <button type='submit'>Потвердить</button>
       </Form>
     </Formik>
@@ -27,6 +27,7 @@ const TaskForm = props => {
 
 const mapDispatchToProps = dispatch => ({
   createTask: values => dispatch(createTaskRequest(values)),
+  
 });
 
 export default connect(null, mapDispatchToProps)(TaskForm);

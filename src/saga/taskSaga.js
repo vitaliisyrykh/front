@@ -8,7 +8,8 @@ export function * createdTask (action) {
       data: {
         data: [task],
       },
-    } = yield API.createTask(action.data);
+    } = yield API.createTask(action.values);
+    
     yield put(TaskActionCreate.createTaskSuccess(task));
   } catch (err) {
     yield put(TaskActionCreate.createTaskError(err))

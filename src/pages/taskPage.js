@@ -6,7 +6,7 @@ const Task = props =>{
   return(
     <div>
       <TaskForm/>
-      {/* <TaskList/> */}
+      <TaskList/>
     </div>
   );
 }

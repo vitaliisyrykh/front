@@ -5,4 +5,5 @@ const httpClient = axios.create({
 });
 
  export const createTask = async value => httpClient.post('/tasks/', value);
+ export const getTasks = ()=>httpClient.get('/tasks/');
  

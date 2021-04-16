@@ -9,11 +9,22 @@ export function * createdTask (action) {
         data: [task],
       },
     } = yield API.createTask(action.values);
-    
+
     yield put(TaskActionCreate.createTaskSuccess(task));
   } catch (err) {
-    yield put(TaskActionCreate.createTaskError(err))
+    yield put(TaskActionCreate.createTaskError(err));
   }
 }
 
-
+export function * getTasks (action) {
+  
+  try {
+    const {
+      data:{data:tasks},
+    } = yield API.getTasks(action);
+    console.log(tasks);
+    yield put(TaskActionCreate.getTasksSuccess({tasks}));
+  } catch (error) {
+    yield put(TaskActionCreate.getTasksError(error))
+  }
+}

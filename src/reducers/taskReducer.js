@@ -9,7 +9,6 @@ function taskReducer (state = initialState, action) {
     case ACTION_TYPES.CREATE_TASK_REQUEST: {
       return {
         ...state,
-        
       };
     }
     case ACTION_TYPES.CREATE_TASK_SUCCESS: {
@@ -30,29 +29,32 @@ function taskReducer (state = initialState, action) {
       };
     }
     case ACTION_TYPES.GET_TASKS_REQUEST: {
-      return{
+      
+      return {
         ...state,
         isFetching: true,
-      }
+      };
     }
     case ACTION_TYPES.GET_TASKS_SUCCESS: {
       const {
         state: { tasks },
       } = state;
-      const { tasks: newTasks } = action;
-      
+      const {
+        payload:{tasks:newTasks},
+      } = action;
+      console.log(newTasks)
       return {
         ...state,
-        isFetching:false,
+        isFetching: false,
         tasks: [...tasks, ...newTasks],
       };
     }
-    case ACTION_TYPES.GET_TASKS_ERROR:{
-      const { error}=action;
-      return{
+    case ACTION_TYPES.GET_TASKS_ERROR: {
+      const { error } = action;
+      return {
         ...state,
-        error
-      }
+        error,
+      };
     }
     default:
       return state;

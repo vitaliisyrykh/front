@@ -19,12 +19,13 @@ export const getTasksRequest = () => ({
   type: ACTION_TYPES.GET_TASKS_REQUEST,
 });
 
-export const getTasksSuccess = ({tasks})=>({
-  type:ACTION_TYPES.GET_TASKS_SUCCESS,
-  tasks
-})
+export const getTasksSuccess = ( {tasks} ) => (console.log(tasks),{
+  type: ACTION_TYPES.GET_TASKS_SUCCESS,
+  payload: { tasks },
+  
+});
 
-export const getTasksError = (error)=>({
+export const getTasksError = error => ({
   type: ACTION_TYPES.GET_TASKS_ERROR,
-  error
-})
+  payload:{error},
+});

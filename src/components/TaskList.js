@@ -31,7 +31,7 @@ const mapStateToProps = ({ task }) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  getTasks: () => dispatch(createActionTask.createTaskRequest()),
+  getTasks: () => dispatch(createActionTask.getTasksRequest()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TaskList);

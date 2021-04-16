@@ -2,6 +2,7 @@ import ACTION_TYPES from '../actions/actionTypes';
 
 const initialState = {
   tasks: [],
+  isFetching:false
 };
 
 function taskReducer (state = initialState, action) {
@@ -32,7 +33,7 @@ function taskReducer (state = initialState, action) {
       
       return {
         ...state,
-        isFetching: true,
+        
       };
     }
     case ACTION_TYPES.GET_TASKS_SUCCESS: {
@@ -42,7 +43,7 @@ function taskReducer (state = initialState, action) {
       const {
         payload:{tasks:newTasks},
       } = action;
-      console.log(newTasks)
+      console.log(tasks)
       return {
         ...state,
         isFetching: false,

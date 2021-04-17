@@ -1,13 +1,17 @@
 import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
+import { useSelector,useDispatch } from 'react-redux';
 import * as createActionTask from '../actions/createActionTask';
+import Task from './Task'
 
 const TaskList = props => {
-  const { tasks, isFetching, error, getTasks } = props;
-  useEffect(() => {
-    getTasks();
-  }, [getTasks]);
   
+  const {tasks,isFetching,error}=useSelector(({ task }) => task);
+  const dispatch=useDispatch();
+
+  useEffect(() => {
+    dispatch(createActionTask.getTasksRequest())
+  }, [dispatch]);
+
   return (
     <section>
       {isFetching && 'Loading....'}
@@ -16,11 +20,7 @@ const TaskList = props => {
         aslkfalsk
         {tasks.map(task => {
           return (
-            <li key={task.id}>
-              <hr />
-              {JSON.stringify(task, null, 4)}
-              <hr />
-            </li>
+            <Task {...task} key={task.id}/>
           );
         })}
       </ul>
@@ -28,12 +28,4 @@ const TaskList = props => {
   );
 };
 
-const mapStateToProps = ({ task }) => ({
-  ...task,
-});
-
-const mapDispatchToProps = dispatch => ({
-  getTasks: () => dispatch(createActionTask.getTasksRequest()),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(TaskList);
+export default TaskList;

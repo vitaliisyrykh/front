@@ -10,9 +10,9 @@ export function * createdTask (action) {
       },
     } = yield API.createTask(action.values);
 
-    yield put(TaskActionCreate.createTaskSuccess(task));
-  } catch (err) {
-    yield put(TaskActionCreate.createTaskError(err));
+    yield put(TaskActionCreate.createTaskSuccess({task}));
+  } catch (error) {
+    yield put(TaskActionCreate.createTaskError({error}));
   }
 }
 
@@ -24,6 +24,6 @@ export function * getTasks (action) {
     console.log(tasks);
     yield put(TaskActionCreate.getTasksSuccess({ tasks }));
   } catch (error) {
-    yield put(TaskActionCreate.getTasksError(error));
+    yield put(TaskActionCreate.getTasksError({error}));
   }
 }

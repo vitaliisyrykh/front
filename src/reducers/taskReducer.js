@@ -3,6 +3,7 @@ import ACTION_TYPES from '../actions/actionTypes';
 const initialState = {
   tasks: [],
   isFetching: false,
+  error:null
 };
 
 function taskReducer (state = initialState, action) {
@@ -48,11 +49,22 @@ function taskReducer (state = initialState, action) {
       };
     }
     case ACTION_TYPES.GET_TASKS_ERROR: {
-      const { error } = action;
+      const { payload:{error} } = action;
       return {
         ...state,
         error,
       };
+    }
+    case ACTION_TYPES.DELETE_TASK_REQUEST:{
+      const {payload:{id}}=action;
+      return{
+        ...state,
+        isFetching:true,
+        id
+      }
+    }
+    case ACTION_TYPES.DELETE_TASK_SUCCESS:{
+
     }
     default:
       return state;

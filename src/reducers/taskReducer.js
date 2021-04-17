@@ -2,7 +2,7 @@ import ACTION_TYPES from '../actions/actionTypes';
 
 const initialState = {
   tasks: [],
-  isFetching:false
+  isFetching: false,
 };
 
 function taskReducer (state = initialState, action) {
@@ -30,20 +30,17 @@ function taskReducer (state = initialState, action) {
       };
     }
     case ACTION_TYPES.GET_TASKS_REQUEST: {
-      
       return {
         ...state,
-        
+        isFetching: true,
       };
     }
     case ACTION_TYPES.GET_TASKS_SUCCESS: {
+      const { tasks } = state;
       const {
-        state: { tasks },
-      } = state;
-      const {
-        payload:{tasks:newTasks},
+        payload: { tasks: newTasks },
       } = action;
-      console.log(tasks)
+      console.log(tasks);
       return {
         ...state,
         isFetching: false,

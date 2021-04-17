@@ -17,14 +17,13 @@ export function * createdTask (action) {
 }
 
 export function * getTasks (action) {
-  
   try {
     const {
-      data:{data:tasks},
+      data: { data: tasks },
     } = yield API.getTasks(action);
     console.log(tasks);
-    yield put(TaskActionCreate.getTasksSuccess({tasks}));
+    yield put(TaskActionCreate.getTasksSuccess({ tasks }));
   } catch (error) {
-    yield put(TaskActionCreate.getTasksError(error))
+    yield put(TaskActionCreate.getTasksError(error));
   }
 }

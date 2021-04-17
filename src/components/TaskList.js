@@ -6,21 +6,23 @@ const TaskList = props => {
   const { tasks, isFetching, error, getTasks } = props;
   useEffect(() => {
     getTasks();
-  });
-  console.log(isFetching);
+  }, []);
+  
   return (
     <section>
       {isFetching && 'Loading....'}
       {error && JSON.stringify(error)}
       <ul>
         aslkfalsk
-        {/* {tasks.map(task=>{
-          return(<li key={task.id}>
-            <hr/>
-            {JSON.stringify(task,null,4)}
-            <hr/>
-          </li>)
-        })}  */}
+        {tasks.map(task => {
+          return (
+            <li key={task.id}>
+              <hr />
+              {JSON.stringify(task, null, 4)}
+              <hr />
+            </li>
+          );
+        })}
       </ul>
     </section>
   );

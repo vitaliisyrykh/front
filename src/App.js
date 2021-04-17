@@ -6,8 +6,7 @@ import {
   NavLink,
 } from 'react-router-dom';
 
-const Task = lazy(()=>import('./pages/taskPage'));
-
+const Task = lazy(() => import('./pages/taskPage'));
 
 const App = props => {
   return (
@@ -21,13 +20,13 @@ const App = props => {
 
         <Suspense fallback='App loading...'>
           <Switch>
-            <Route exact path='/'/>
-            <Route path='/tasks/' component={Task}/>
+            <Route exact path='/' />
+            <Route path='/tasks/' component={Task} />
           </Switch>
         </Suspense>
       </Router>
     </div>
   );
-}
+};
 
 export default App;

@@ -1,7 +1,8 @@
 import axios from 'axios';
+import {BASE_URL} from '../config';
 
 const httpClient = axios.create({
-  baseURL: 'http://localhost:3000/api',
+  baseURL: `${BASE_URL}/api`,
 });
 
 export const createTask = async value => httpClient.post('/tasks/', value);

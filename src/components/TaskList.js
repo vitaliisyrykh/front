@@ -6,7 +6,7 @@ const TaskList = props => {
   const { tasks, isFetching, error, getTasks } = props;
   useEffect(() => {
     getTasks();
-  }, []);
+  }, [getTasks]);
   
   return (
     <section>

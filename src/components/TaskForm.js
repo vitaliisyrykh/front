@@ -12,14 +12,14 @@ const TaskForm = props => {
     <Formik
       initialValues={{
         body: '',
-        deathLine:'',
+        deathLine: '',
         isDone: false,
       }}
       onSubmit={onSubmit}
     >
       <Form>
         <Field name='body' placeholder='Введите текст для задания' />
-        <Field name='deathLine' type='date'/>
+        <Field name='deathLine' type='date' />
         <button type='submit'>Потвердить</button>
       </Form>
     </Formik>

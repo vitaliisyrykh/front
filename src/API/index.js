@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {BASE_URL} from '../config';
+import { BASE_URL } from '../config';
 
 const httpClient = axios.create({
   baseURL: 'http://localhost:3000/api',
@@ -7,4 +7,4 @@ const httpClient = axios.create({
 
 export const createTask = async value => httpClient.post('/tasks/', value);
 export const getTasks = () => httpClient.get('/tasks/');
-export const deleteTask = ({id}={})=>httpClient.delete(`/tasks/${id}`);
+export const deleteTask = ({ id } = {}) => httpClient.delete(`/tasks/${id}`);

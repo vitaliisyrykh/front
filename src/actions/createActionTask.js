@@ -5,9 +5,9 @@ export const createTaskRequest = values => ({
   values,
 });
 
-export const createTaskSuccess = values => ({
+export const createTaskSuccess = data => ({
   type: ACTION_TYPES.CREATE_TASK_SUCCESS,
-  values,
+  data,
 });
 
 export const createTaskError = ({ error }) => ({
@@ -24,7 +24,7 @@ export const getTasksSuccess = ({ tasks }) => ({
   payload: { tasks },
 });
 
-export const getTasksError = error => ({
+export const getTasksError = ({error}) => ({
   type: ACTION_TYPES.GET_TASKS_ERROR,
   payload: { error },
 });
@@ -34,12 +34,36 @@ export const deleteTaskRequest = ({ id } = {}) => ({
   payload: { id },
 });
 
-export const deleteTaskSuccess = ({ id } = {}) => ({
-  type: ACTION_TYPES.DELETE_TASK_SUCCESS,
-  payload: { id },
-});
+export const deleteTaskSuccess = ({ id } = {}) => (
+  console.log(id),
+  {
+    type: ACTION_TYPES.DELETE_TASK_SUCCESS,
+    payload: { id },
+  }
+);
 
 export const deleteTaskError = ({ error }) => ({
   type: ACTION_TYPES.DELETE_TASK_ERROR,
   payload: { error },
+});
+
+export const updateTaskRequest = ( id ,  values ) => (
+  {
+    type: ACTION_TYPES.UPDATE_TASK_REQUEST,
+    payload: { id, values },
+  }
+);
+
+export const updateTaskSuccess = ({ updatedTask }, { id }) => (console.log(updatedTask),{
+  type: ACTION_TYPES.UPDATE_TASK_SUCCESS,
+  payload: { updatedTask, id },
+});
+
+export const updateTaskError = ({ error }) => ({
+  type: ACTION_TYPES.UPDATE_TASK_ERROR,
+  payload: { error },
+});
+
+export const updateComponRender = () => ({
+  type: ACTION_TYPES.UPDATE_COMPONENT_RENDER,
 });

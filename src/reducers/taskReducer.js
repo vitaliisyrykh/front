@@ -5,6 +5,7 @@ const initialState = {
   tasks: [],
   isFetching: false,
   error: null,
+  isUpdate:false
 };
 
 const handler = {
@@ -15,10 +16,11 @@ const handler = {
   [ACTION_TYPES.CREATE_TASK_SUCCESS]: produce(
     ({ tasks, isFetching }, action) => {
       const {
-        data: { task },
+        data: { newTask },
       } = action;
+      console.log(newTask);
       isFetching = false;
-      tasks.push(task);
+      tasks.push(newTask);
     }
   ),
 
@@ -46,6 +48,28 @@ const handler = {
       initialError = error;
     }
   ),
+  [ACTION_TYPES.UPDATE_TASK_REQUEST]: produce((draft, action) => {
+    draft.isFetching = true;
+    
+  }),
+  [ACTION_TYPES.UPDATE_COMPONENT_RENDER]: produce((draft,action)=>{
+    draft.isUpdate = true;
+  }),
+  [ACTION_TYPES.UPDATE_TASK_SUCCESS]: produce((draft, action) => {
+    const {
+      payload: { updatedTask, id },
+    } = action;
+    draft.isFetching = false;
+    draft.isUpdate = false;
+    draft.tasks.filter(task => task.id !== id).push(updatedTask);
+  }),
+  [ACTION_TYPES.UPDATE_TASK_ERROR]: produce((draft, action) => {
+    const {
+      payload: { error },
+    } = action;
+    draft.error = error;
+  }),
+
   [ACTION_TYPES.DELETE_TASK_REQUEST]: produce(({ isFetching }, action) => {
     isFetching = true;
   }),
@@ -53,6 +77,7 @@ const handler = {
     const {
       payload: { id },
     } = action;
+    console.log(id);
     draft.isFetching = false;
     draft.tasks = draft.tasks.filter(task => task.id !== id);
   }),

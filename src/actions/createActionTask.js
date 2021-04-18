@@ -54,9 +54,9 @@ export const updateTaskRequest = ( id ,  values ) => (
   }
 );
 
-export const updateTaskSuccess = ({ updatedTask }, { id }) => (console.log(updatedTask),{
+export const updateTaskSuccess = ({ data }, { id }) => (console.log(data),{
   type: ACTION_TYPES.UPDATE_TASK_SUCCESS,
-  payload: { updatedTask, id },
+  payload: { data, id },
 });
 
 export const updateTaskError = ({ error }) => ({

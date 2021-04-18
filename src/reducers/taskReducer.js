@@ -57,11 +57,11 @@ const handler = {
   }),
   [ACTION_TYPES.UPDATE_TASK_SUCCESS]: produce((draft, action) => {
     const {
-      payload: { updatedTask, id },
+      payload: { data:updatedTasks, id },
     } = action;
     draft.isFetching = false;
     draft.isUpdate = false;
-    draft.tasks.filter(task => task.id !== id).push(updatedTask);
+    draft.tasks.filter(task => task.id !== id).push(...updatedTasks);
   }),
   [ACTION_TYPES.UPDATE_TASK_ERROR]: produce((draft, action) => {
     const {

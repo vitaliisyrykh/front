@@ -44,10 +44,10 @@ export function * updateTaskSaga (action) {
       payload: { id, values },
     } = action;
     const {
-      data : {data:data}
+      data : {data}
     } = yield API.updateTask({ id }, { values });
-    console.log({data});
-    yield put(TaskActionCreate.updateTaskSuccess(/* { updatedTask } */ { id }));
+   
+    yield put(TaskActionCreate.updateTaskSuccess( { data } , { id }));
   } catch (error) {
     yield put(TaskActionCreate.updateTaskError(error));
   }
